@@ -12,7 +12,7 @@ struct CoordinatorView: View {
     
     var body: some View {
         NavigationStack(path: $coordinator.path) {
-            coordinator.build(page: .apple(Fruit(id: UUID(), name: "Apple", price: 15)))
+            coordinator.build(page: .apple(AppleModel(variety: "Kashmiri Apple", isSweet: true)))
                 .navigationDestination(for: Page.self) { page in
                     coordinator.build(page: page)
                 }

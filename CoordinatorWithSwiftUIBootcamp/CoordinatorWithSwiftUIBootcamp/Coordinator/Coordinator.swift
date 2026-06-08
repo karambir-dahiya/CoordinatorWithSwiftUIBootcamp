@@ -14,17 +14,36 @@ struct Fruit: Hashable {
     let price: Int
 }
 
-enum Page: Hashable, Identifiable {
-    case apple(Fruit)
-    case banana(Fruit)
-    case carrot(Fruit)
+struct AppleModel: Identifiable, Hashable {
+    let id: UUID = UUID()
+    let variety: String
+    let isSweet: Bool
+}
+
+struct BananaModel: Identifiable, Hashable {
+    let id: UUID = UUID()
+    let ripenessIndex: Int
+}
+
+struct CarrotModel: Identifiable, Hashable {
+    let id: Int
+    let lengthInCm: Double
+}
+
+enum Page: Identifiable, Hashable {
+    case apple(AppleModel)
+    case banana(BananaModel)
+    case carrot(CarrotModel)
     
+
     var id: String {
         switch self {
-        case .apple(let fruit),
-                .banana(let fruit),
-                .carrot(let fruit):
-            return fruit.id.uuidString
+        case .apple(let model):
+            return model.id.uuidString
+        case .banana(let model):
+            return model.id.uuidString
+        case .carrot(let model):
+            return String(model.id)
         }
     }
 }
@@ -89,15 +108,12 @@ final class Coordinator: ObservableObject {
     @ViewBuilder
     func build(page: Page) -> some View {
         switch page {
-            
-        case .apple(let fruit):
-            AppleView(fruit: fruit)
-            
-        case .banana(let fruit):
-            BananaView(fruit: fruit)
-            
-        case .carrot(let fruit):
-            CarrotView(fruit: fruit)
+        case .apple(let model):
+            AppleView(fruit: model)
+        case .banana(let model):
+            BananaView(fruit: model)
+        case .carrot(let model):
+            CarrotView(fruit: model)
         }
     }
     

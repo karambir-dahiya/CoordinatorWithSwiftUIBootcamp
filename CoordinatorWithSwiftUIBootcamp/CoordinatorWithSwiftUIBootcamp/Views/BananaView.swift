@@ -9,14 +9,14 @@ import SwiftUI
 
 struct BananaView: View {
     @EnvironmentObject private var coordinator: Coordinator
-    let fruit: Fruit
+    let fruit: BananaModel
     
     var body: some View {
         List {
-            Text("Name : \(fruit.name)")
-            Text("Price : \(fruit.price)")
+            Text("Name : \(fruit.id)")
+            Text("Price : \(fruit.ripenessIndex)")
             Button("Push Carrot") {
-                coordinator.push(.carrot(Fruit(id: UUID(), name: "Carrot", price: 15)))
+                coordinator.push(.carrot(CarrotModel(id: 56476567, lengthInCm: 13)))
             }
             
             Button("Pop") {
@@ -30,5 +30,5 @@ struct BananaView: View {
 
 
 #Preview {
-    BananaView(fruit: Fruit(id: UUID(), name: "Carrot", price: 15))
+    BananaView(fruit: BananaModel(ripenessIndex: 4))
 }

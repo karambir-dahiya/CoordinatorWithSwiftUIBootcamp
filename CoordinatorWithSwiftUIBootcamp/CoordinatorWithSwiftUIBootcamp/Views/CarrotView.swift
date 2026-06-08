@@ -9,12 +9,12 @@ import SwiftUI
 
 struct CarrotView: View {
     @EnvironmentObject private var coordinator: Coordinator
-    let fruit: Fruit
+    let fruit: CarrotModel
     
     var body: some View {
         List {
-            Text("Name : \(fruit.name)")
-            Text("Price : \(fruit.price)")
+            Text("Name : \(fruit.id)")
+            Text("Price : \(fruit.lengthInCm)")
             Button("Pop") {
                 coordinator.pop()
             }
@@ -29,5 +29,5 @@ struct CarrotView: View {
 }
 
 #Preview {
-    CarrotView(fruit: Fruit(id: UUID(), name: "Apple", price: 15))
+    CarrotView(fruit: CarrotModel(id: 76866, lengthInCm: 12))
 }
