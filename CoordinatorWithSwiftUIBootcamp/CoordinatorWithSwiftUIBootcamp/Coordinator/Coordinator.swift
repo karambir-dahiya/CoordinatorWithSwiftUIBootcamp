@@ -8,27 +8,46 @@
 import Combine
 import SwiftUI
 
-enum Page: String, Identifiable {
-    case apple, banana, carrot
+struct Fruit: Hashable {
+    let id: UUID
+    let name: String
+    let price: Int
+}
+
+enum Page: Hashable, Identifiable {
+    case apple(Fruit)
+    case banana(Fruit)
+    case carrot(Fruit)
     
     var id: String {
-        self.rawValue
+        switch self {
+        case .apple(let fruit),
+                .banana(let fruit),
+                .carrot(let fruit):
+            return fruit.id.uuidString
+        }
     }
 }
 
-enum Sheet: String, Identifiable {
-    case lemon
+enum Sheet: Identifiable {
+    case lemon(Fruit)
     
     var id: String {
-        self.rawValue
+        switch self {
+        case .lemon(let fruit):
+            return fruit.id.uuidString
+        }
     }
 }
 
-enum FullScreenCover: String, Identifiable {
-    case olive
+enum FullScreenCover: Identifiable {
+    case olive(Fruit)
     
     var id: String {
-        self.rawValue
+        switch self {
+        case .olive(let fruit):
+            return fruit.id.uuidString
+        }
     }
 }
 
@@ -70,32 +89,36 @@ final class Coordinator: ObservableObject {
     @ViewBuilder
     func build(page: Page) -> some View {
         switch page {
-        case .apple:
-            AppleView()
-        case .banana:
-            BananaView()
-        case .carrot:
-            CarrotView()
+            
+        case .apple(let fruit):
+            AppleView(fruit: fruit)
+            
+        case .banana(let fruit):
+            BananaView(fruit: fruit)
+            
+        case .carrot(let fruit):
+            CarrotView(fruit: fruit)
         }
     }
     
     @ViewBuilder
     func build(sheet: Sheet) -> some View {
         switch sheet {
-        case .lemon:
-            NavigationStack {
-                LemonView()
-            }
             
+        case .lemon(let fruit):
+            NavigationStack {
+                LemonView(fruit: fruit)
+            }
         }
     }
     
     @ViewBuilder
     func build(fullScreenCover: FullScreenCover) -> some View {
         switch fullScreenCover {
-        case .olive:
+            
+        case .olive(let fruit):
             NavigationStack {
-                OliveView()
+                OliveView(fruit: fruit)
             }
         }
     }

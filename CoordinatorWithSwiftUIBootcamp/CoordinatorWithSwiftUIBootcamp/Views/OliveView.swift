@@ -9,8 +9,12 @@ import SwiftUI
 
 struct OliveView: View {
     @EnvironmentObject private var coordinator: Coordinator
+    let fruit: Fruit
+    
     var body: some View {
         List {
+            Text("Name : \(fruit.name)")
+            Text("Price : \(fruit.price)")
             Button("Dismiss") {
                 coordinator.dismissFullScreenCover()
             }
@@ -21,5 +25,5 @@ struct OliveView: View {
 
 
 #Preview {
-    OliveView()
+    OliveView(fruit: Fruit(id: UUID(), name: "Apple", price: 15))
 }

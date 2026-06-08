@@ -9,8 +9,12 @@ import SwiftUI
 
 struct LemonView: View {
     @EnvironmentObject private var coordinator: Coordinator
+    let fruit: Fruit
+    
     var body: some View {
         List {
+            Text("Name : \(fruit.name)")
+            Text("Price : \(fruit.price)")
             Button("Dismiss") {
                 coordinator.dismissSheet()
             }
@@ -21,5 +25,5 @@ struct LemonView: View {
 }
 
 #Preview {
-    LemonView()
+    LemonView(fruit: Fruit(id: UUID(), name: "Apple", price: 15))
 }
