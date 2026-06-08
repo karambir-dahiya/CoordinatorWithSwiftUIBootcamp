@@ -23,6 +23,7 @@ struct CoordinatorView: View {
                     coordinator.build(fullScreenCover: fullScreenCover)
                 }
         }
+        .environmentObject(coordinator)
     }
 }
 
