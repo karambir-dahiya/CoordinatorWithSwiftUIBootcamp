@@ -12,7 +12,7 @@ struct OliveView: View {
     var body: some View {
         List {
             Button("Dismiss") {
-                
+                coordinator.dismissFullScreenCover()
             }
         }
         .navigationTitle("Olive")

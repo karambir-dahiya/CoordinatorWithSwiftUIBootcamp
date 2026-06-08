@@ -47,7 +47,7 @@ final class Coordinator: ObservableObject {
         self.sheet = sheet
     }
     
-    func present(_ fullScreenCover: FullScreenCover) {
+    func presentfullScreenCover(_ fullScreenCover: FullScreenCover) {
         self.fullScreenCover = fullScreenCover
     }
     

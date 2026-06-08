@@ -12,11 +12,11 @@ struct BananaView: View {
     var body: some View {
         List {
             Button("Push Carrot") {
-                
+                coordinator.push(.carrot)
             }
             
             Button("Pop") {
-                
+                coordinator.pop()
             }
             
         }

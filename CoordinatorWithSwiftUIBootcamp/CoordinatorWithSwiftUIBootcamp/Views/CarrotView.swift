@@ -12,11 +12,11 @@ struct CarrotView: View {
     var body: some View {
         List {
             Button("Pop") {
-                
+                coordinator.pop()
             }
             
             Button("Pop to root view") {
-                
+                coordinator.popToRoot()
             }
             
         }

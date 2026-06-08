@@ -13,15 +13,15 @@ struct AppleView: View {
     var body: some View {
         List {
             Button("Push Banana") {
-                
+                coordinator.push(.banana)
             }
             
             Button("Present Lemon") {
-                
+                coordinator.present(.lemon)
             }
             
             Button("Present Olive") {
-                
+                coordinator.presentfullScreenCover(.olive)
             }
         }
         .navigationTitle("apple.fill")

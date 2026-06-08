@@ -12,7 +12,7 @@ struct LemonView: View {
     var body: some View {
         List {
             Button("Dismiss") {
-                
+                coordinator.dismissSheet()
             }
             
         }
