@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LemonView: View {
+    @EnvironmentObject private var coordinator: Coordinator
     var body: some View {
         List {
             Button("Dismiss") {
